@@ -22,7 +22,7 @@
             </h3>
         </div>
 
-       <div ng-controller="listCtrl as list" ng-hide="list.quizActive">
+       <div ng-controller="listCtrl as list" ng-hide="list.quizMetrics.quizActive">
             <form class="form-inline well well-sm clearfix">
                 <span class="glyphicon glyphicon-search">
                     <input type="text" placeholder="Search..." class="form-control" ng-model="list.search">
@@ -81,12 +81,16 @@
                 </div>
             </div>
 
-       </div>
-    </div><!--List Controller-->
+       </div><!--List Controller-->
 
-    <div ng-controller="quizCtrl as quiz">
-
+       <div ng-controller="quizCtrl as quiz" ng-show="quiz.quizMetrics.quizActive">
+            <h1>Quiz</h1>
+        </div><!-- Quiz Controller-->
+       
     </div>
+
+    
+
 
     <!-- third party js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>

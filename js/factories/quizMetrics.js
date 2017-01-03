@@ -5,8 +5,17 @@
 
 		function QuizMetrics(){
 			var quizObj = {
-				quizActive: false
+				quizActive: false,
+				changeState: changeState
 			};
+
+			return quizObj;
+
+			function changeState(state){
+				quizObj.quizActive = state;
+			}
 		}
+
+
 
 })();

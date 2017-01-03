@@ -7,21 +7,24 @@
 	   .module("footyFacts")
 	   .controller("listCtrl", ListController);
 
-	   function ListController(){
+       ListController.$inject = ['quizMetrics'];
+
+	   function ListController(quizMetrics){
 	   		var vm = this;
+
+            vm.quizMetrics = quizMetrics;
 	   		vm.data = turtlesData;
 	   		vm.activeTurtle = {};
 	   		vm.changeActiveTurtle = changeActiveTurtle;
 	   		vm.search = "";
-	   		vm.quizActive = false;
-	   		vm.activeQuiz = activateQuiz;
+	   		vm.activateQuiz = activateQuiz;
 
 	   		function changeActiveTurtle(index){
 	   			vm.activeTurtle = index;
 	   		}
 
 	   		function activateQuiz(){
-	   			vm.quizActive = true;
+	   			quizMetrics.changeState(true);
 	   		}
 
 	   }

@@ -16,6 +16,7 @@
 			vm.selectAnswer = selectAnswer;
 			vm.error = false;
 			vm.finalize = false;
+			vm.finalizeAnswers = finalizeAnswers;
 	
 			var numQsAnswered = 0;
 
@@ -42,18 +43,20 @@
 
 			function questionAnswered(){
 
-				var quizLength = DataService.quizQuestions.quizLength;
+				var quizLength = DataService.quizQuestions.length;
 
 				if(DataService.quizQuestions[vm.activeQuestion].selected !== null){
 					numQsAnswered++;
 					if(numQsAnswered >= quizLength){
 						//finalize quiz
 						for(var i = 0; i < quizLength; i++){
+
 							if(DataService.quizQuestions[i].selected === null){
 								setActiveQuestion(i);
 								return;
 							}
 						}
+
 						vm.error = false;
 						vm.finalize = true;
 						return;
@@ -66,6 +69,16 @@
 			function selectAnswer(index){
 				DataService.quizQuestions[vm.activeQuestion].selected = index;
 			}
+
+			function finalizeAnswers{
+				vm.finalize = false;
+				numQsAnswered = 0;
+				vm.activeQuestion = 0;
+				quizMetrics.markQuiz();
+				quizMetrics.changeState("quiz", false);
+				quizMetrics.changeState("results", false);
+			}
+
 		}
 
 })();

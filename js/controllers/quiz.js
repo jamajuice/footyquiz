@@ -70,13 +70,13 @@
 				DataService.quizQuestions[vm.activeQuestion].selected = index;
 			}
 
-			function finalizeAnswers{
+			function finalizeAnswers(){
 				vm.finalize = false;
 				numQsAnswered = 0;
 				vm.activeQuestion = 0;
 				quizMetrics.markQuiz();
 				quizMetrics.changeState("quiz", false);
-				quizMetrics.changeState("results", false);
+				quizMetrics.changeState("results", true);
 			}
 
 		}

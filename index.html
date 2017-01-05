@@ -156,7 +156,65 @@
         </div><!-- Quiz Controller-->
 
         <div ng-controller="resultsCtrl as results" ng-show="results.quizMetrics.resultsActive">
-            <h1>out here</h1>
+            <div class="row">
+                <div class="col-xs-8">
+                    <h2>Results:</h2>
+                    <div class="btn-toolbar">
+                        <button class="btn" ng-repeat="question in results.dataService.quizQuestions" ng-class="{'btn-success': question.correct, 'btn-danger': !question.correct }" ng-click="results.setActiveQuestion($index)">
+                            <span class="glyphicon" ng-class="{'glyphicon-ok': question.correct, 'glyphicon-remove': !question.correct }"></span>
+                        </button>
+                    </div>  
+                </div>
+                <div class="col-xs-4">
+                    <div class="row">
+                        <h4>Legend:</h4>
+                        <div class="col-sm-4">
+                            <button class="btn btn-success">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                            <p>Correct</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <p>Incorrect</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- results bar -->
+            <div class="row">
+                <h3>Question:</h3>
+                <div clas="well well-sm">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>{{results.activeQuestion +1 + ". " + results.dataService.quizQuestions[results.activeQuestion].text}}</h4>
+                            
+                            <div class="row">
+                                <div class="col-sm-6" ng-repeat="answer in results.dataService.quizQuestions[results.activeQuestion].possibilities">
+                                    <h4 class="answer" ng-class="results.getAnswerClass($index)">
+                                        {{answer.answer}}
+                                        <p class="pull-right" ng-show="$index !== results.quizMetrics.correctAnswers[results.activeQuestion] && $index === results.dataService.quizQuestions[results.activeQuestion].selected">Your Answer</p>
+                                        <p class="pull-right" ng-show="$index === results.quizMetrics.correctAnswers[results.activeQuestion]">Correct Answer</p>
+                                    </h4> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-warning" ng-click="quiz.questionAnswered()">Continue</button>
+                </div>
+
+                <div class="well well-sm" ng-show="quiz.finalize">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3>Are you sure you want to submit your answers?</h3>
+                            <button class="btn btn-success" ng-click="quiz.finalizeAnswers()">Yes</button>
+                            <button class="btn btn-danger" ng-click="quiz.finalize = false">No</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- question results row -->
         </div><!-- results controller-->
 
     </div>

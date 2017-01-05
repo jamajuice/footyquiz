@@ -215,17 +215,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-warning" ng-click="quiz.questionAnswered()">Continue</button>
-                </div>
-
-                <div class="well well-sm" ng-show="quiz.finalize">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h3>Are you sure you want to submit your answers?</h3>
-                            <button class="btn btn-success" ng-click="quiz.finalizeAnswers()">Yes</button>
-                            <button class="btn btn-danger" ng-click="quiz.finalize = false">No</button>
-                        </div>
-                    </div>
+                    <button class="btn btn-primary btn-lg" ng-click="results.reset()">Back to facts</button>
                 </div>
 
             </div><!-- question results row -->

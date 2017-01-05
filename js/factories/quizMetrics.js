@@ -3,7 +3,9 @@
 		.module("footyFacts")
 		.factory("quizMetrics", QuizMetrics);
 
-		function QuizMetrics(){
+		QuizMetrics.$inject = ['DataService'];
+
+		function QuizMetrics(DataService){
 			var quizObj = {
 				quizActive: false,
 				resultsActive: false,
@@ -21,6 +23,14 @@
 					return false;
 				}
 			}
+
+			function markQuiz(){
+
+			}
+
+
+
+
 		}
 
 

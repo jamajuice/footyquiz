@@ -13,14 +13,14 @@
 	   		var vm = this;
 
             vm.quizMetrics = quizMetrics;
-	   		vm.data = DataService.turtlesData;
-	   		vm.activeTurtle = {};
-	   		vm.changeActiveTurtle = changeActiveTurtle;
+	   		vm.data = DataService.footyData;
+	   		vm.activeFooty = {};
+	   		vm.changeActiveFooty = changeActiveFooty;
 	   		vm.search = "";
 	   		vm.activateQuiz = activateQuiz;
 
-	   		function changeActiveTurtle(index){
-	   			vm.activeTurtle = index;
+	   		function changeActiveFooty(index){
+	   			vm.activeFooty = index;
 	   		}
 
 	   		function activateQuiz(){
